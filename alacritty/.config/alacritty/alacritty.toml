@@ -1,0 +1,10 @@
+import = [
+	"~/.config/alacritty/themes/kanagawa_wave.toml"
+]
+
+[shell]
+program = "/bin/fish"
+
+[window]
+padding = { x = 4, y = 4 }
+dynamic_padding = true
