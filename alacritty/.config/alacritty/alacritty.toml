@@ -8,3 +8,6 @@ program = "/bin/fish"
 [window]
 padding = { x = 4, y = 4 }
 dynamic_padding = true
+
+[font.normal]
+family = "Hack Nerd Font Mono"
