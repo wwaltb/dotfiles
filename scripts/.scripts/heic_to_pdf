@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Check if the correct number of arguments is provided
+if [ "$#" -lt 2 ]; then
+    echo "usage: $0 <output_pdf_file> <input_heic_file1> [input_heic_file2 ...]"
+    exit 1
+fi
+
+# get the output PDF from arg1
+output_pdf="$1"
+
+# shift args list
+shift
+
+# convert HEICs to PDFs
+for input_heic in "$@"; do
+    magick "$input_heic" "${input_heic%.HEIC}.pdf"
+    input_pdfs+=("${input_heic%.HEIC}.pdf")
+done
+
+# append PDFs to output file
+cpdf "$output_pdf" "${input_pdfs[@]}"
+
+# delete individual PDFs and HEICs
+rm -f "${input_pdfs[@]}"
+rm -f "$@"
+
+echo "conversion successful - appended images to $output_pdf"
+
+read -r -p "do you want to preview the pdf? (y/n): " choice
+
+if [[ $choice =~ ^[Yy]$ ]]; then
+   preview "$output_pdf"
+fi
