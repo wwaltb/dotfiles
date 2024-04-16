@@ -24,4 +24,6 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
+export QSYS_ROOTDIR="/home/walt/.cache/yay/quartus-free-quartus/opt/intelFPGA/23.1/quartus/sopc_builder/bin"
+
 . "$HOME/.cargo/env"
