@@ -1,0 +1,7 @@
+#!/bin/bash
+
+files="${@:1:$#}"
+
+for file in $files; do
+	echo ${file:2}
+done
