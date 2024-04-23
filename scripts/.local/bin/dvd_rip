@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "$#" -ne 3 ]; then
+	echo "Usage: $0 input output title"
+	exit 1
+fi
+
+input="$1"
+output="$2"
+title="$3"
+
+# HandBrakeCLI --input "$input" --output "$output" --title "$title" --encoder x264 --width 640 --height 480 --rate 29.97 --vb 1500 --audio 1 --aencoder mp3lame --ab 128 --format mp4
+HandBrakeCLI --input "$input" --output "$output" --title "$title" --preset "Fast 480p30"
+
+echo "ripping complete"

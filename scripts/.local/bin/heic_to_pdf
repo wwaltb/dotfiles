@@ -12,23 +12,23 @@ output_pdf="$1"
 # shift args list
 shift
 
-# convert HEICs to PDFs
+# convert HEICs to PNGs
 for input_heic in "$@"; do
-    magick "$input_heic" "${input_heic%.HEIC}.pdf"
-    input_pdfs+=("${input_heic%.HEIC}.pdf")
+    heif-convert "$input_heic" "${input_heic%.HEIC}.png"
+    input_pngs+=("${input_heic%.HEIC}.png")
 done
 
-# append PDFs to output file
-cpdf "$output_pdf" "${input_pdfs[@]}"
+# append PNGs to output PDF
+img2pdf -r 0 "${input_pngs[@]}" -o "$output_pdf"
 
 # delete individual PDFs and HEICs
-rm -f "${input_pdfs[@]}"
+rm -f "${input_pngs[@]}"
 rm -f "$@"
 
 echo "conversion successful - appended images to $output_pdf"
 
-read -r -p "do you want to preview the pdf? (y/n): " choice
-
-if [[ $choice =~ ^[Yy]$ ]]; then
-   preview "$output_pdf"
-fi
+# read -r -p "do you want to preview the pdf? (y/n): " choice
+# 
+# if [[ $choice =~ ^[Yy]$ ]]; then
+#    preview "$output_pdf"
+# fi
