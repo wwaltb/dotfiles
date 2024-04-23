@@ -12,8 +12,8 @@ vim.keymap.set("n", "<leader>gf", telescope_builtin.git_files, {})
 
 -- navigating the 'project' directory
 vim.keymap.set("n", "<leader>pv", "<cmd>Telescope file_browser<cr>")
-vim.keymap.set("n", "<leader>ps", "<cmd>Neotree reveal<cr>")
-vim.keymap.set("n", "<C-s>", "<cmd>Neotree reveal toggle<cr>")
+vim.keymap.set("n", "<leader>ps", "<cmd>Neotree reveal right<cr>")
+vim.keymap.set("n", "<C-s>", "<cmd>Neotree reveal right toggle<cr>")
 
 -- navigating with the harpoon man
 local harpoon = require("harpoon")
