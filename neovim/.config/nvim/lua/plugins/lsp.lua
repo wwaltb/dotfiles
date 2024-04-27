@@ -22,6 +22,28 @@ return {
          lspconfig.bashls.setup({
             capabilities = capabilities,
          })
+         lspconfig.pylsp.setup({
+            capabilities = capabilities,
+         })
+         lspconfig.ruby_lsp.setup({
+            capabilities = capabilities,
+         })
+         lspconfig.harper_ls.setup({
+            capabilities = capabilities,
+            settings = {
+               ["harper-ls"] = { linters = { sentence_capitalization = false } },
+            },
+            filetypes = {
+               "markdown",
+            },
+         })
+         lspconfig.clangd.setup({
+            on_attach = function(client, bufnr)
+               client.server_capabilities.signatureHelpProvider = false
+               on_attach(client, bufnr)
+            end,
+            capabilities = capabilities,
+         })
       end,
    },
 }

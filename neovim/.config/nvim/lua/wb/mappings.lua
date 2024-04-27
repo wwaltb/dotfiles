@@ -12,13 +12,13 @@ vim.keymap.set("n", "<leader>gf", telescope_builtin.git_files, {})
 
 -- navigating the 'project' directory
 vim.keymap.set("n", "<leader>pv", "<cmd>Telescope file_browser<cr>")
-vim.keymap.set("n", "<leader>ps", "<cmd>Neotree reveal<cr>")
-vim.keymap.set("n", "<C-s>", "<cmd>Neotree reveal toggle<cr>")
+vim.keymap.set("n", "<leader>ps", "<cmd>Neotree reveal right<cr>")
+vim.keymap.set("n", "<C-s>", "<cmd>Neotree reveal right toggle<cr>")
 
 -- navigating with the harpoon man
 local harpoon = require("harpoon")
 
-vim.keymap.set("n", "<leader>ha", function() harpoon:list():append() end)
+vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
 vim.keymap.set("n", "<leader>ht", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 vim.keymap.set("n", "<leader>hd", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<leader>hf", function() harpoon:list():next() end)
@@ -36,3 +36,7 @@ vim.keymap.set("n", "<leader>h9", function() harpoon:list():select(9) end)
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+
+-- zen mode
+local zen_mode = require("zen-mode")
+vim.keymap.set("n", "<leader>zm", zen_mode.toggle )

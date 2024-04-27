@@ -1,19 +1,19 @@
 return {
-   {
-      "hrsh7th/cmp-nvim-lsp",
-      config = true,
-   },
+	{
+		"hrsh7th/cmp-nvim-lsp",
+		config = true,
+	},
 	{
 		"L3MON4D3/LuaSnip",
-      version = "v2.3.0",
-      build = "make install_jsregexp",
+		version = "v2.3.0",
+		build = "make install_jsregexp",
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
-         "rafamadriz/friendly-snippets",
+			"rafamadriz/friendly-snippets",
 		},
-      config = function()
-         require("luasnip.loaders.from_vscode").lazy_load()
-      end
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
+		end,
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -31,7 +31,7 @@ return {
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-j>"] = cmp.mapping.select_next_item(),
-					["<C-k>"] = cmp.mapping.select_next_item(),
+					["<C-k>"] = cmp.mapping.select_prev_item(),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
 					["<C-e>"] = cmp.mapping.abort(),
