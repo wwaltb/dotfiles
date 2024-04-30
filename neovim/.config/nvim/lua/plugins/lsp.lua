@@ -25,7 +25,7 @@ return {
          lspconfig.pylsp.setup({
             capabilities = capabilities,
          })
-         lspconfig.ruby_lsp.setup({
+         lspconfig.solargraph.setup({
             capabilities = capabilities,
          })
          lspconfig.harper_ls.setup({
