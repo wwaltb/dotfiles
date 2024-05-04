@@ -28,14 +28,11 @@ return {
          lspconfig.solargraph.setup({
             capabilities = capabilities,
          })
-         lspconfig.harper_ls.setup({
+         lspconfig.cssls.setup({
             capabilities = capabilities,
-            settings = {
-               ["harper-ls"] = { linters = { sentence_capitalization = false } },
-            },
-            filetypes = {
-               "markdown",
-            },
+         })
+         lspconfig.texlab.setup({
+            capabilities = capabilities,
          })
          lspconfig.clangd.setup({
             on_attach = function(client, bufnr)

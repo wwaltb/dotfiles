@@ -1,0 +1,26 @@
+* {
+   font-family: FiraCode Nerd Font Mono;
+   background-color: #1f1f28
+}
+
+#window {
+   border-radius: 8px;
+   overflow: hidden;
+}
+
+#outer-box {
+   border: 3px solid #c8c093;
+   border-radius: 8px;
+   overflow: hidden;
+}
+
+#inner-box {
+   border-radius: 8px;
+   overflow: hidden;
+}
+
+#input {
+   margin: 6px;
+   border: none;
+   color: #dcd7ba
+}

@@ -24,6 +24,12 @@ return {
 						["<C-c>"] = actions.close,
 					},
 				},
+				vimgrep_arguments = { "rg", "--files", "--hidden", "--glob", "!**/.git/*", "-L" },
+			},
+			pickers = {
+				find_files = {
+					find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*", "-L" },
+				},
 			},
 			extensions = {
 				file_browser = {
