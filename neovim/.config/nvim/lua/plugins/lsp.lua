@@ -28,15 +28,6 @@ return {
          lspconfig.solargraph.setup({
             capabilities = capabilities,
          })
-         lspconfig.harper_ls.setup({
-            capabilities = capabilities,
-            settings = {
-               ["harper-ls"] = { linters = { sentence_capitalization = false } },
-            },
-            filetypes = {
-               "markdown",
-            },
-         })
          lspconfig.clangd.setup({
             on_attach = function(client, bufnr)
                client.server_capabilities.signatureHelpProvider = false
