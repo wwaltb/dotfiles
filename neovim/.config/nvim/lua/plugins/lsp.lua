@@ -28,6 +28,12 @@ return {
          lspconfig.solargraph.setup({
             capabilities = capabilities,
          })
+         lspconfig.cssls.setup({
+            capabilities = capabilities,
+         })
+         lspconfig.texlab.setup({
+            capabilities = capabilities,
+         })
          lspconfig.clangd.setup({
             on_attach = function(client, bufnr)
                client.server_capabilities.signatureHelpProvider = false
