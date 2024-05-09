@@ -14,6 +14,9 @@ return {
    {
       "neovim/nvim-lspconfig",
       config = function()
+         -- setup neodev before lspconfig
+         require("neodev").setup({})
+
          local lspconfig = require("lspconfig")
          local capabilities = require("cmp_nvim_lsp").default_capabilities()
          lspconfig.lua_ls.setup({
@@ -35,10 +38,6 @@ return {
             capabilities = capabilities,
          })
          lspconfig.clangd.setup({
-            on_attach = function(client, bufnr)
-               client.server_capabilities.signatureHelpProvider = false
-               on_attach(client, bufnr)
-            end,
             capabilities = capabilities,
          })
       end,
