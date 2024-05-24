@@ -25,9 +25,9 @@ require("wb.mappings")
 
 -- Indents
 vim.cmd("set expandtab")
-vim.cmd("set tabstop=3")
-vim.cmd("set softtabstop=3")
-vim.cmd("set shiftwidth=3")
+vim.cmd("set tabstop=4")
+vim.cmd("set softtabstop=4")
+vim.cmd("set shiftwidth=4")
 
 -- Numbers
 vim.cmd("set number")
