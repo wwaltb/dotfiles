@@ -10,7 +10,7 @@ padding = { x = 4, y = 4 }
 dynamic_padding = true
 
 [font.normal]
-family = "FiraCode Nerd Font Mono"
+family = "FiraCode"
 
 # [font]
 # offset.x = 0

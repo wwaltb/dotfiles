@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: FontAwesome, FiraCode, FiraCode Nerd Font;
     font-size: 13px;
 }
 
@@ -50,29 +50,12 @@ button:hover {
     background-color: #16161d;
 }
 
-#mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
-}
-
 #clock,
 #battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
 #network,
 #pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#mpd {
-    padding: 0 10px;
-    color: #ffffff;
+#bluetooth {
+    margin: 0 12px;
 }
 
 #window,
