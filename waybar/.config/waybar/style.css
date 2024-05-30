@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, FiraCode, FiraCode Nerd Font;
+    font-family: FontAwesome, FiraCode Nerd Font Mono;
     font-size: 13px;
 }
 
@@ -61,6 +61,18 @@ button:hover {
 #window,
 #workspaces {
     margin: 0 4px;
+}
+
+#submap {
+    color: #938aa9;
+}
+
+#battery.warning {
+    color: #c0a36e;
+}
+
+#battery.critical {
+    color: #c34043;
 }
 
 /* If workspaces is the leftmost module, omit left margin */

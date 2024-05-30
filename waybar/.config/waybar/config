@@ -1,5 +1,5 @@
 {
-    "margin": "4 8 0 8",
+    "margin": "4 8 -4 8",
 
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "hyprland/submap"],
@@ -8,7 +8,6 @@
 
     // Modules configuration
     "clock": {
-        // "timezone": "America/New_York",
         "format": "{:%I:%M %p}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
@@ -18,16 +17,12 @@
         "tooltip": false
     },
     "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
         "format": "{icon} {temperatureC}°C",
         "format-icons": ["", "", ""]
     },
     "battery": {
         "states": {
-            // "good": 95,
             "warning": 30,
             "critical": 15
         },
@@ -64,17 +59,5 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    }
 }
 
