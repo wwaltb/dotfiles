@@ -25,7 +25,7 @@ return {
          lspconfig.bashls.setup({
             capabilities = capabilities,
          })
-         lspconfig.pylsp.setup({
+         lspconfig.pyright.setup({
             capabilities = capabilities,
          })
          lspconfig.solargraph.setup({
@@ -38,6 +38,12 @@ return {
             capabilities = capabilities,
          })
          lspconfig.clangd.setup({
+            capabilities = capabilities,
+         })
+         lspconfig.verible.setup({
+            capabilities = capabilities,
+         })
+         lspconfig.svlangserver.setup({
             capabilities = capabilities,
          })
       end,
