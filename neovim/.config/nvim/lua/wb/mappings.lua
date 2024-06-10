@@ -37,6 +37,10 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 
+-- git
+local gitsigns = require("gitsigns")
+vim.keymap.set("n", "<leader>gh", gitsigns.preview_hunk_inline)
+
 -- zen mode
 local zen_mode = require("zen-mode")
 vim.keymap.set("n", "<leader>zm", zen_mode.toggle, {})
