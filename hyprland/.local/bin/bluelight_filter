@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+current="$(hyprshade current)"
+
+if [ "$current" == "" ]; then
+    hyprshade on bluelight_filter_low
+elif [ "$current" == "bluelight_filter_low" ]; then
+    hyprshade on bluelight_filter_high
+else
+    hyprshade off
+fi
