@@ -55,7 +55,8 @@
             "car": "",
             "default": ["", "", " "]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "ignored-sinks": "easyeffects_sink"
     },
 }
 
