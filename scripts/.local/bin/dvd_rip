@@ -1,15 +1,74 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-if [ "$#" -ne 3 ]; then
-	echo "Usage: $0 input output title"
-	exit 1
+if [ "$#" -ne 0 ]; then
+    echo "Usage: $0"
+    exit 1
 fi
 
-input="$1"
-output="$2"
-title="$3"
+# folder to store rips
+DVD_RIP="/home/walt/hdd/videos/dvd_rip/"
+
+# get dvd title info
+TITLES="$(lsdvd /dev/sr0)"
+
+# echo title of dvd
+echo "$TITLES" | head -n 1
+echo
+
+# prompt if series or single video
+read -p "Is this a series? [Y/n]: " YN
+
+if [[ "$YN" == "Y" || "$YN" == "y" ]]; then
+    IS_SERIES="true"
+    # get the starting episode #
+    read -p "First episode # for this rip: " EPISODE_OFF
+else
+    IS_SERIES="false"
+    # get the video output name
+    read -p "Output name: " OUTPUT_NAME
+fi
+
+# echo the titles with a length >= 1 minute
+echo
+echo "$TITLES" | grep -E "Length: ..:([1-9][0-9]|[0-9][1-9])"
+
+# rip each title that is an episode of the series
+if [[ "$IS_SERIES" == "true" ]]; then
+    TO_RIP=""
+    echo "Enter titles to rip (end with empty line): "
+
+    # input titles to rip as lines
+    while IFS= read -r LINE; do
+        [[ -z "$LINE" ]] && break
+
+        TO_RIP+="$LINE"$'\n'
+    done
+
+    # loop through each title to rip
+    while IFS= read -r TITLE <&3; do
+        [[ -z "$TITLE" ]] && break
+
+        # at least 2 digit episode number
+        EPISODE_OFF_02D=$(printf "%02d" "$EPISODE_OFF")
+
+        INPUT="/dev/sr0"
+        OUTPUT="${DVD_RIP}episode_${EPISODE_OFF_02D}.mp4"
+        PRESET="$DVD_RIP../Gamecube.json"
+        HandBrakeCLI --input "$INPUT" --output "$OUTPUT" --title "$TITLE" --preset-import-file "$PRESET"
+
+        # increment episode number
+        EPISODE_OFF=$((EPISODE_OFF + 1))
+    done 3<<< "$TO_RIP"
+# rip the title containing the movie
+else
+    read -p "Enter title to rip: " TITLE
+
+    INPUT="/dev/sr0"
+    OUTPUT="${DVD_RIP}${OUTPUT_NAME}.mp4"
+    PRESET="$DVD_RIP../Gamecube.json"
+    HandBrakeCLI --input "$INPUT" --output "$OUTPUT" --title "$TITLE" --preset-import-file "$PRESET"
+fi
 
 # HandBrakeCLI --input "$input" --output "$output" --title "$title" --encoder x264 --width 640 --height 480 --rate 29.97 --vb 1500 --audio 1 --aencoder mp3lame --ab 128 --format mp4
-HandBrakeCLI --input "$input" --output "$output" --title "$title" --preset "Fast 480p30"
 
 echo "ripping complete"
