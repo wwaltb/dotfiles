@@ -1,0 +1,64 @@
+#|
+
+Since it may be important for you to know, pressing and holding all of the
+three following keys together at the same time will cause kanata to exit:
+
+  Left Control, Space, Escape
+
+This is for the physical key input rather than after any remappings
+that are done by kanata.
+
+|#
+
+(defcfg
+  linux-dev /dev/input/by-id/usb-Keychron_Keychron_K2-event-kbd
+  process-unmapped-keys yes
+  concurrent-tap-hold yes
+  rapid-event-delay 5
+)
+
+;; If you are looking for other keys, the file src/keys/mod.rs should hopefully
+;; provide some insight.
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  ins  prnt del
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgdn
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret  home
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up   end
+  lctl lalt lmet           spc            rmet wkup rctl left down rght
+)
+
+#|
+(deflayer name
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _    _    _    _
+)
+|#
+
+(deflayer default
+  caps _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  @cap _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    @wkf _    _    _    _
+)
+
+(deflayer function
+  _    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _    _    _    _
+)
+
+(defalias
+  fn  (layer-toggle function)
+  wkf (tap-hold-press 200 200 wkup @fn)
+  cap (tap-hold-press 200 200 esc lctl)
+)
