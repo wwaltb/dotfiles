@@ -1,8 +1,5 @@
-import = [
-	"~/.config/alacritty/themes/kanagawa_wave.toml"
-]
 
-[shell]
+[terminal.shell]
 program = "/bin/fish"
 
 [window]
@@ -11,6 +8,13 @@ dynamic_padding = true
 
 [font.normal]
 family = "FiraCode Nerd Font Mono"
+
+[general]
+import = [
+	"~/.config/alacritty/themes/kanagawa_wave.toml"
+]
+
+[terminal]
 
 # line spacing:
 # [font]

@@ -53,7 +53,7 @@ if [[ "$IS_SERIES" == "true" ]]; then
 
         INPUT="/dev/sr0"
         OUTPUT="${DVD_RIP}episode_${EPISODE_OFF_02D}.mp4"
-        PRESET="$DVD_RIP../Gamecube.json"
+        PRESET="Fast 1080p30"
         HandBrakeCLI --input "$INPUT" --output "$OUTPUT" --title "$TITLE" --preset-import-file "$PRESET"
 
         # increment episode number
@@ -65,7 +65,7 @@ else
 
     INPUT="/dev/sr0"
     OUTPUT="${DVD_RIP}${OUTPUT_NAME}.mp4"
-    PRESET="$DVD_RIP../Gamecube.json"
+    PRESET="Fast 1080p30"
     HandBrakeCLI --input "$INPUT" --output "$OUTPUT" --title "$TITLE" --preset-import-file "$PRESET"
 fi
 
