@@ -48,3 +48,6 @@ vim.keymap.set("n", "<leader>zm", zen_mode.toggle, {})
 -- pandoc
 local run_pandoc = require("run-pandoc")
 vim.keymap.set("n", "<leader>cp", run_pandoc.compile, {})
+
+-- browser-like ctags
+vim.keymap.set("n", "<C-[>", "<C-t>", {})

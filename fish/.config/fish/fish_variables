@@ -1,6 +1,8 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export DEBUGINFOD_URLS:https\x3a//debuginfod\x2earchlinux\x2eorg
 SETUVAR --export GAMEMODERUNEXEC:prime\x2drun
+SETUVAR --export VULKAN_SDK:/usr/
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:727169
 SETUVAR fish_color_cancel:\x1d
