@@ -48,15 +48,26 @@ that are done by kanata.
 )
 |#
 
-(deflayer default
+(deflayer base
   caps _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  @cap _    _    _    _    _    _    _    _    _    _    _    _
+  @cap @a   @s   @d   @f   _    _    @j   @k   @l   @;   _    _
   _    _    _    _    _    _    _    _    _    _    _    _
   @wkf _    lalt lmet      @spm           rmet _    _    _    _    _
                                                          _    _    _
   @tp
+)
+
+(deflayer typing
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    a    s    d    f    _    _    j    k    l    ;    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _         spc            _    _    _    _    _    _
+                                                         _    _    _
+  _
 )
 
 (deflayer function
@@ -81,10 +92,56 @@ that are done by kanata.
   XX
 )
 
+(defvar
+  left-hand-keys (
+    q w e r t
+    a s d f g
+    z x c v b
+  )
+  left-hand-keys-no-d (
+    q w e r t
+    a s   f g
+    z x c v b
+  )
+  right-hand-keys (
+    y u i o p
+    h j k l ;
+    n m , . /
+  )
+)
+
+(defvirtualkeys
+  to-base (layer-switch base)
+)
+
 (defalias
+  ;; layer aliases
   fn  (layer-toggle function)
   tp  (layer-toggle trackpoint)
-  cap (tap-hold-press 200 200 esc lctl)
-  wkf (tap-hold-press 200 200 wkup @fn)
+  
+  ;; useful capslock
+  cap (tap-hold-release 200 200 esc lctl)
+
+  ;; enable function keys
+  wkf (tap-hold-release 200 200 wkup @fn)
+
+  ;; ergonomic scrolling
   spm (tap-hold 200 200 spc mmid)
+
+  ;; this alias allows smooth typing by going to a safe layer once any tap-hold
+  ;; on qwerty keys is tapped
+  tap (multi
+    (layer-switch typing)
+    (on-idle 20 tap-virtualkey to-base)
+  )
+
+  ;; homerow mods
+  a (tap-hold-release 200 200 (multi a @tap) lalt)
+  s (tap-hold-release 200 170 (multi s @tap) lsft)
+  d (tap-hold-release 200 170 (multi d @tap) lmet)
+  f (tap-hold-release 200 150 (multi f @tap) lctl)
+  j (tap-hold-release 200 150 (multi j @tap) rctl)
+  k (tap-hold-release 200 170 (multi k @tap) rmet)
+  l (tap-hold-release 200 170 (multi l @tap) rsft)
+  ; (tap-hold-release 200 200 (multi ; @tap) ralt)
 )
