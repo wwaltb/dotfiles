@@ -4,5 +4,4 @@ if status is-interactive
 end
 
 if status is-login
-    Hyprland
 end
