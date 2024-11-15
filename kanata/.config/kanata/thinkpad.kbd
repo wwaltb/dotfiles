@@ -92,24 +92,6 @@ that are done by kanata.
   XX
 )
 
-(defvar
-  left-hand-keys (
-    q w e r t
-    a s d f g
-    z x c v b
-  )
-  left-hand-keys-no-d (
-    q w e r t
-    a s   f g
-    z x c v b
-  )
-  right-hand-keys (
-    y u i o p
-    h j k l ;
-    n m , . /
-  )
-)
-
 (defvirtualkeys
   to-base (layer-switch base)
 )
