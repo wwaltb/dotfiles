@@ -54,6 +54,7 @@ button:hover {
 #battery,
 #network,
 #pulseaudio,
+#idle_inhibitor,
 #bluetooth {
     margin: 0 12px;
 }

@@ -4,8 +4,11 @@ current="$(hyprshade current)"
 
 if [ "$current" == "" ]; then
     hyprshade on bluelight_filter_low
+    notify-send "Bluelight filter low"
 elif [ "$current" == "bluelight_filter_low" ]; then
     hyprshade on bluelight_filter_high
+    notify-send "Bluelight filter high"
 else
     hyprshade off
+    notify-send "Bluelight filter off"
 fi

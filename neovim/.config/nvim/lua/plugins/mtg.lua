@@ -1,3 +1,3 @@
 return {
-   dir = "~/Githubs/mtg.nvim",
+   dir = "~/git/mtg.nvim",
 }

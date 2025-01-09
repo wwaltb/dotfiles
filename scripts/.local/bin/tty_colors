@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ "$TERM" = "linux" ]; then
+    echo -en "\e]P01f1f28" # Black
+    echo -en "\e]P1c34043" # Red
+    echo -en "\e]P276946a" # Green
+    echo -en "\e]P3ffffff" # Brown (change)
+    echo -en "\e]P4739cd8" # Blue
+    echo -en "\e]P5957fb8" # Magenta
+    echo -en "\e]P66a9589" # Cyan
+    echo -en "\e]P7e5e5e5" # Light grey (change)
+    echo -en "\e]P82b2b2b" # Dark grey
+    echo -en "\e]P9e82424" # Bright red
+    echo -en "\e]PA98bb6c" # Bright green
+    echo -en "\e]PBc0a36e" # Yellow
+    echo -en "\e]PC7fb4ca" # Bright blue
+    echo -en "\e]PD938aa9" # Bright magenta
+    echo -en "\e]PE7aa89f" # Bright Cyan
+    echo -en "\e]PFdcd7ba" # Bright White
+    clear # Clear artifacts
+fi
