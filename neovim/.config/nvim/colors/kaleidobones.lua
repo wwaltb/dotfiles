@@ -23,8 +23,8 @@ if bg == "light" then
 	}, bg)
 else
 	palette = util.palette_extend({
-		bg = hsluv "#1f1f28",
-		fg = hsluv "#f4f4f4",
+		bg = hsluv "#f4f4f4",
+		fg = hsluv "#1f1f28",
 		rose = hsluv "#9a6d66", -- red
 		leaf = hsluv "#728b62", -- green
 		wood = hsluv "#c7c69d", -- yellow
@@ -61,6 +61,9 @@ local specs = lush.extends({ base_specs }).with(function(injected_functions)
         MiniDiffSignAdd { fg = palette.leaf },
         MiniDiffSignChange { fg = palette.water },
         MiniDiffSignDelete { fg = palette.rose },
+
+        PmenuThumb { bg = palette.fg.li(44) },
+        BlinkCmpScrollBarThumb { PmenuThumb },
 	}
 end)
 -- Pass the specs to lush to apply

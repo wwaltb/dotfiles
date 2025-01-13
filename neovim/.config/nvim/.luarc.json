@@ -9,6 +9,11 @@
         "Number",
         "Boolean",
         "Identifier",
-        "StatusLine"
+        "StatusLine",
+        "MiniDiffSignAdd",
+        "MiniDiffSignChange",
+        "MiniDiffSignDelete",
+        "PmenuThumb",
+        "BlinkCmpScrollBarThumb"
     ]
 }

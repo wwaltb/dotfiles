@@ -18,8 +18,9 @@ return {
             "stevearc/conform.nvim",
         },
         config = function()
-            -- setup neodev before lspconfig
-            require("neodev").setup({})
+            require("lazydev").setup({
+                ft = "lua",
+            })
 
             local lspconfig = require("lspconfig")
             local capabilities = require("blink.cmp").get_lsp_capabilities()

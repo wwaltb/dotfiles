@@ -4,6 +4,9 @@ return {
         notify = {
             enabled = true,
         },
+        status = {
+            enabled = true,
+        },
         dashboard = {
             enabled = true,
             { section = "keys", gap = 1, padding = 1 },
