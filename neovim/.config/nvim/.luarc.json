@@ -3,6 +3,12 @@
         "vim",
         "Special",
         "Statement",
-        "Type"
+        "Type",
+        "Constant",
+        "String",
+        "Number",
+        "Boolean",
+        "Identifier",
+        "StatusLine"
     ]
 }

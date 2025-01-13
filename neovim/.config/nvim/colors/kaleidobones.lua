@@ -14,12 +14,12 @@ if bg == "light" then
 	palette = util.palette_extend({
 		bg = hsluv "#ffffff",
 		fg = hsluv "#000000",
-		rose = hsluv "#9a6d66", -- red
-		leaf = hsluv "#728b62", -- green
-		wood = hsluv "#c7c69d", -- yellow
-		water = hsluv "#677090", -- blue
-		blossom = hsluv "#c2aab3", -- pink
-		sky = hsluv "#9dc3c6", -- cyan
+		rose = hsluv "#ff0000", -- red
+		leaf = hsluv "#00ff00", -- green
+		wood = hsluv "#ffff00", -- yellow
+		water = hsluv "#0000ff", -- blue
+		blossom = hsluv "#ff00ff", -- pink
+		sky = hsluv "#00ffff", -- cyan
 	}, bg)
 else
 	palette = util.palette_extend({
@@ -48,18 +48,21 @@ local specs = lush.extends({ base_specs }).with(function(injected_functions)
 		Statement { base_specs.Statement, fg = palette.rose },
 		Type { fg = palette.sky, gui = "italic" },
         Constant { fg = palette.leaf, gui = "bold"},
-        String { fg = palette.leaf.da(30), gui = "italic" },
+        String { fg = palette.leaf, gui = "italic" },
         Number { fg = palette.rose },
         Boolean { fg = palette.blossom, gui = "bold,italic" },
         Identifier { fg = palette.fg.li(28) },
         StatusLine { bg = palette.bg },
-		Special { fg = palette.water },
+		Special { fg = palette.water.da(23) },
 
-        sym"@variable.parameter" { fg = palette.water, gui = "" },
+        sym"@variable.parameter" { fg = palette.water },
         sym"@string.escape" { fg = palette.wood, gui = "bold" },
+
+        MiniDiffSignAdd { fg = palette.leaf },
+        MiniDiffSignChange { fg = palette.water },
+        MiniDiffSignDelete { fg = palette.rose },
 	}
 end)
-
 -- Pass the specs to lush to apply
 lush(specs)
 
