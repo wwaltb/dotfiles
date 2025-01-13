@@ -5,7 +5,7 @@ local lush = require "lush"
 local hsluv = lush.hsluv -- Human-friendly hsl
 local util = require "zenbones.util"
 
-local bg = vim.o.background
+local bg = "light"
 
 -- Define a palette. Use `palette_extend` to fill unspecified colors
 -- Based on https://github.com/gruvbox-community/gruvbox#palette
@@ -13,7 +13,7 @@ local palette
 if bg == "light" then
 	palette = util.palette_extend({
 		bg = hsluv "#ffffff",
-		fg = hsluv "#3c3836",
+		fg = hsluv "#000000",
 		rose = hsluv "#9a6d66", -- red
 		leaf = hsluv "#728b62", -- green
 		wood = hsluv "#c7c69d", -- yellow
@@ -23,7 +23,7 @@ if bg == "light" then
 	}, bg)
 else
 	palette = util.palette_extend({
-		bg = hsluv "#181818",
+		bg = hsluv "#1f1f28",
 		fg = hsluv "#f4f4f4",
 		rose = hsluv "#9a6d66", -- red
 		leaf = hsluv "#728b62", -- green
@@ -38,15 +38,27 @@ end
 local generator = require "zenbones.specs"
 local base_specs = generator.generate(palette, bg, generator.get_global_config(colors_name, bg))
 
+if bg == true then
+    return
+end
 -- Optionally extend specs using Lush
 local specs = lush.extends({ base_specs }).with(function(injected_functions)
     local sym = injected_functions.sym
 	return {
 		Statement { base_specs.Statement, fg = palette.rose },
-		Special { fg = palette.water },
 		Type { fg = palette.sky, gui = "italic" },
-        -- Identifier { fg = palette.fg, gui = "bold" },
-        StatusLine { bg = palette.bg }
+        Constant { fg = palette.leaf, gui = "bold"},
+        String { fg = palette.leaf.da(30), gui = "italic" },
+        Number { fg = palette.rose },
+        Boolean { fg = palette.blossom, gui = "bold,italic" },
+        Identifier { fg = palette.fg.li(28) },
+        StatusLine { bg = palette.bg },
+		Special { fg = palette.water },
+
+        sym"@variable.parameter" { fg = palette.water, gui = "" },
+        sym"@string.escape" { fg = palette.wood, gui = "bold" },
+
+        BlinkCmpScrollBarThumb { bg = palette.fg.li(22) },
 	}
 end)
 

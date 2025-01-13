@@ -13,12 +13,18 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
+        dependencies = {
+            "folke/lazydev.nvim",
+            "stevearc/conform.nvim",
+        },
         config = function()
             -- setup neodev before lspconfig
-            require("neodev").setup({})
+            require("lazydev").setup({
+                ft = "lua",
+            })
 
             local lspconfig = require("lspconfig")
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            local capabilities = require("blink.cmp").get_lsp_capabilities()
 
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
@@ -42,7 +48,7 @@ return {
                 capabilities = capabilities,
                 cmd = {
                     "clangd",
-                    "--fallback-style=webkit"
+                    "--fallback-style=webkit",
                 },
                 --filetypes = {
                 --    "c",
@@ -64,13 +70,14 @@ return {
             })
             lspconfig.asm_lsp.setup({
                 capabilities = capabilities,
-                handlers = { ['textDocument/publishDiagnostics'] = function(...) end }
+                handlers = { ["textDocument/publishDiagnostics"] = function(...) end },
             })
             lspconfig.arduino_language_server.setup({
                 capabilities = capabilities,
                 cmd = {
                     "arduino-language-server",
-                    "-cli-config", "/home/walt/.arduino15/arduino-cli.yaml",
+                    "-cli-config",
+                    "/home/walt/.arduino15/arduino-cli.yaml",
                     "-fqbn",
                     "esp32:esp32:featheresp32",
                 },

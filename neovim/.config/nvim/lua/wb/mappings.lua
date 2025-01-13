@@ -1,19 +1,18 @@
 -- navigating with telescope
-local telescope_builtin = require("telescope.builtin")
+local minipick = require("mini.pick")
 
-vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", telescope_builtin.live_grep, {})
-vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, {})
-vim.keymap.set("n", "<leader>fs", telescope_builtin.lsp_document_symbols, {})
-vim.keymap.set("n", "<leader>fh", telescope_builtin.help_tags, {})
-vim.keymap.set("n", "<leader>fr", telescope_builtin.oldfiles, {})
-vim.keymap.set("n", "<leader>fw", telescope_builtin.grep_string, {})
-vim.keymap.set("n", "<leader>gf", telescope_builtin.git_files, {})
+vim.keymap.set("n", "<leader>ff", minipick.builtin.files, {})
+vim.keymap.set("n", "<leader>fg", minipick.builtin.grep_live, {})
+vim.keymap.set("n", "<leader>fb", minipick.builtin.buffers, {})
+--vim.keymap.set("n", "<leader>fs", minipick.builtin.lsp_document_symbols, {})
+vim.keymap.set("n", "<leader>fh", minipick.builtin.help, {})
+--vim.keymap.set("n", "<leader>fr", minipick.builtin.oldfiles, {})
+--vim.keymap.set("n", "<leader>fw", minipick.builtin.grep_string, {})
+--vim.keymap.set("n", "<leader>gf", minipick.builtin.git_files, {})
 
--- navigating the 'project' directory
-vim.keymap.set("n", "<leader>pv", "<cmd>Telescope file_browser<cr>")
-vim.keymap.set("n", "<leader>ps", "<cmd>Neotree reveal right<cr>")
-vim.keymap.set("n", "<C-s>", "<cmd>Neotree reveal right toggle<cr>")
+-- navigating the file system
+local minifile = require("mini.files")
+vim.keymap.set("n", "<C-s>", minifile.open, {})
 
 -- navigating with the harpoon man
 local harpoon = require("harpoon")
@@ -38,8 +37,8 @@ vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 
 -- git
-local gitsigns = require("gitsigns")
-vim.keymap.set("n", "<leader>gh", gitsigns.preview_hunk_inline)
+local minidiff = require("mini.diff")
+vim.keymap.set("n", "<leader>gh", minidiff.toggle_overlay, {})
 
 -- zen mode
 local zen_mode = require("zen-mode")
