@@ -38,8 +38,8 @@ vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 
 -- git
-local gitsigns = require("gitsigns")
-vim.keymap.set("n", "<leader>gh", gitsigns.preview_hunk_inline)
+local minigit = require("mini.git")
+vim.keymap.set("n", "<leader>gh", minigit.show_at_cursor)
 
 -- zen mode
 local zen_mode = require("zen-mode")
