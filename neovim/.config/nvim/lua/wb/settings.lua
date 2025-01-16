@@ -1,3 +1,6 @@
+-- Colors
+vim.cmd("colorscheme kaleidobones")
+
 -- Indents
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")

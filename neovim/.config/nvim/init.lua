@@ -28,4 +28,3 @@ require("wb.borders")
 
 -- vim settings
 require("wb.settings")
-vim.cmd("colorscheme kaleidobones")

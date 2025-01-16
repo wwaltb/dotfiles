@@ -14,7 +14,7 @@ return {
 
         completion = {
             menu = {
-                border = "rounded",
+                border = "single",
                 winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
                 draw = {
                     treesitter = { "lsp" },
@@ -25,7 +25,7 @@ return {
         signature = {
             enabled = true,
             window = {
-                border = "rounded",
+                border = "single",
                 winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
             },
         },
