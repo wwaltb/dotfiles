@@ -1,6 +1,7 @@
 return {
     {
         "williamboman/mason.nvim",
+        lazy = false,
         config = true,
     },
     {
@@ -18,7 +19,6 @@ return {
             "stevearc/conform.nvim",
         },
         config = function()
-            -- setup neodev before lspconfig
             require("lazydev").setup({
                 ft = "lua",
             })

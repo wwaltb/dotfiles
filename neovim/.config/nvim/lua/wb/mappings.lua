@@ -1,12 +1,13 @@
 -- navigating with telescope
 local minipick = require("mini.pick")
+local miniextra = require("mini.extra")
 
 vim.keymap.set("n", "<leader>ff", minipick.builtin.files, {})
 vim.keymap.set("n", "<leader>fg", minipick.builtin.grep_live, {})
 vim.keymap.set("n", "<leader>fb", minipick.builtin.buffers, {})
---vim.keymap.set("n", "<leader>fs", minipick.builtin.lsp_document_symbols, {})
+-- vim.keymap.set("n", "<leader>fs", miniextra.pickers.lsp, {})
 vim.keymap.set("n", "<leader>fh", minipick.builtin.help, {})
---vim.keymap.set("n", "<leader>fr", minipick.builtin.oldfiles, {})
+vim.keymap.set("n", "<leader>fr", miniextra.pickers.oldfiles, {})
 --vim.keymap.set("n", "<leader>fw", minipick.builtin.grep_string, {})
 --vim.keymap.set("n", "<leader>gf", minipick.builtin.git_files, {})
 
@@ -34,6 +35,7 @@ vim.keymap.set("n", "<leader>h9", function() harpoon:list():select(9) end)
 -- lsp
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, {})
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 
 -- git
@@ -41,8 +43,8 @@ local minidiff = require("mini.diff")
 vim.keymap.set("n", "<leader>gh", minidiff.toggle_overlay, {})
 
 -- zen mode
-local zen_mode = require("zen-mode")
-vim.keymap.set("n", "<leader>zm", zen_mode.toggle, {})
+local snacks = require("snacks")
+vim.keymap.set("n", "<leader>z", function() snacks.zen() end)
 
 -- pandoc
 local run_pandoc = require("run-pandoc")
