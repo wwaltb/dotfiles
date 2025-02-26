@@ -36,7 +36,6 @@ vim.keymap.set("n", "<leader>h9", function() harpoon:list():select(9) end)
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, {})
-vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 
 -- git
 local minidiff = require("mini.diff")

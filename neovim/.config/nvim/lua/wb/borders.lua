@@ -1,4 +1,4 @@
-local _border = "rounded"
+local _border = "single"
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 	border = _border,
